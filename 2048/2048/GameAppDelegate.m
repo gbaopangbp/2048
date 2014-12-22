@@ -1,14 +1,14 @@
 //
-//  _048AppDelegate.m
+//  GameAppDelegate.m
 //  2048
 //
 //  Created by tirostiros on 14-12-22.
 //  Copyright (c) 2014年 cn.com.tiros. All rights reserved.
 //
 
-#import "_048AppDelegate.h"
+#import "GameAppDelegate.h"
 
-@implementation _048AppDelegate
+@implementation GameAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

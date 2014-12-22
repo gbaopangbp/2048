@@ -1,5 +1,5 @@
 //
-//  _048AppDelegate.h
+//  GameAppDelegate.h
 //  2048
 //
 //  Created by tirostiros on 14-12-22.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface _048AppDelegate : UIResponder <UIApplicationDelegate>
+@interface GameAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
