@@ -19,6 +19,7 @@
 		46662CBB1A47FD1B001CE76B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662CA31A47FD1B001CE76B /* UIKit.framework */; };
 		46662CC31A47FD1B001CE76B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46662CC11A47FD1B001CE76B /* InfoPlist.strings */; };
 		46662CC51A47FD1B001CE76B /* _048Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46662CC41A47FD1B001CE76B /* _048Tests.m */; };
+		46662CD31A47FE11001CE76B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46662CD21A47FE11001CE76B /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		46662CC01A47FD1B001CE76B /* 2048Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "2048Tests-Info.plist"; sourceTree = "<group>"; };
 		46662CC21A47FD1B001CE76B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		46662CC41A47FD1B001CE76B /* _048Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _048Tests.m; sourceTree = "<group>"; };
+		46662CD11A47FE11001CE76B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		46662CD21A47FE11001CE76B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,9 +110,9 @@
 		46662CA51A47FD1B001CE76B /* 2048 */ = {
 			isa = PBXGroup;
 			children = (
-				46662CAE1A47FD1B001CE76B /* GameAppDelegate.h */,
-				46662CAF1A47FD1B001CE76B /* GameAppDelegate.m */,
-				46662CB11A47FD1B001CE76B /* Images.xcassets */,
+				46662CD01A47FDDF001CE76B /* View */,
+				46662CCF1A47FDD0001CE76B /* Model */,
+				46662CCE1A47FDAF001CE76B /* Controller */,
 				46662CA61A47FD1B001CE76B /* Supporting Files */,
 			);
 			path = 2048;
@@ -118,6 +121,9 @@
 		46662CA61A47FD1B001CE76B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				46662CAE1A47FD1B001CE76B /* GameAppDelegate.h */,
+				46662CAF1A47FD1B001CE76B /* GameAppDelegate.m */,
+				46662CB11A47FD1B001CE76B /* Images.xcassets */,
 				46662CA71A47FD1B001CE76B /* 2048-Info.plist */,
 				46662CA81A47FD1B001CE76B /* InfoPlist.strings */,
 				46662CAB1A47FD1B001CE76B /* main.m */,
@@ -142,6 +148,29 @@
 				46662CC11A47FD1B001CE76B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46662CCE1A47FDAF001CE76B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46662CD11A47FE11001CE76B /* RootViewController.h */,
+				46662CD21A47FE11001CE76B /* RootViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		46662CCF1A47FDD0001CE76B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		46662CD01A47FDDF001CE76B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +271,7 @@
 			files = (
 				46662CB01A47FD1B001CE76B /* GameAppDelegate.m in Sources */,
 				46662CAC1A47FD1B001CE76B /* main.m in Sources */,
+				46662CD31A47FE11001CE76B /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
