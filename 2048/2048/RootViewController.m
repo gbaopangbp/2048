@@ -8,8 +8,13 @@
 
 #import "RootViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GameBackGroundView.h"
+#import "GameData.h"
+#import "MoveDate.h"
 
-@interface RootViewController ()
+@interface RootViewController ()<GameBackGRoundSwipDelegate>
+@property(nonatomic,strong)GameBackGroundView *backGroundView;
+@property(nonatomic,strong)GameData *gameData;
 
 @end
 
@@ -24,6 +29,17 @@
     return self;
 }
 
+-(GameData*)gameData
+{
+    if (!_gameData)
+    {
+        _gameData = [[GameData alloc] init];
+    }
+    return _gameData;
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,70 +49,21 @@
 //    [showButton setTitle:@"2048" forState:UIControlStateNormal];
 //    [showButton setUserInteractionEnabled:NO];
 //    [self.view addSubview:showButton];
+    self.backGroundView = [[GameBackGroundView alloc] init];
+    [self.backGroundView setDelegate:self];
+    [self.view addSubview:self.backGroundView];
+    CGPoint point = [self.gameData getFreePostion];
+    NSInteger value = [self.gameData getRandomValueAtPostion:point];
+    GameLabel *label = [[GameLabel alloc] initWithTitle:value andPoint:point];
+    [self.backGroundView addLabel:label atPoint:point];
     
-    UILabel *showLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 85, 80)];
-    [showLabel setText:@"2048"];
-    [showLabel setBackgroundColor:[UIColor colorWithRed:0xCD/255.0 green:0xCD/255.0 blue:0 alpha:1]];
-    [showLabel setTextAlignment:NSTextAlignmentCenter];
-    [showLabel setTextColor:[UIColor whiteColor]];
-    [showLabel setFont:[UIFont systemFontOfSize:30]];
-    showLabel.layer.cornerRadius = 5;
-    showLabel.layer.masksToBounds = YES;
-    [self.view addSubview:showLabel];
+//    CGPoint secPoint = [self.gameData getFreePostion];
+//    NSInteger secValue = [self.gameData getRandomValueAtPostion:secPoint];
+//    GameLabel *secLabel = [[GameLabel alloc] initWithTitle:secValue andPoint:point];
+//    [self.backGroundView addLabel:secLabel atPoint:secPoint];
     
-    
-    UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 20, 80, 40)];
-    [scoreLabel setBackgroundColor:[UIColor grayColor]];
-    [scoreLabel setFont:[UIFont systemFontOfSize:15]];
-    [scoreLabel setNumberOfLines:2];
-    [scoreLabel setTextAlignment:NSTextAlignmentCenter];
-    [scoreLabel setText:@"分数:\n0"];
-    scoreLabel.layer.cornerRadius = 4;
-    scoreLabel.layer.masksToBounds = YES;
-    [self.view addSubview:scoreLabel];
-    
-    UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(120, 70, 80, 30)];
-    [menuButton setBackgroundColor:[UIColor colorWithRed:0xE0/255.0 green:0x45/255.0 blue:0 alpha:1]];
-    [menuButton setTitle:@"菜单" forState:UIControlStateNormal];
-    menuButton.titleLabel.font = [UIFont systemFontOfSize:10];
-    menuButton.layer.cornerRadius = 4;
-    menuButton.layer.masksToBounds = YES;
-    [self.view addSubview:menuButton];
-    
-    UILabel *historyLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 20, 80, 40)];
-    [historyLabel setBackgroundColor:[UIColor grayColor]];
-    [historyLabel setFont:[UIFont systemFontOfSize:10]];
-    [historyLabel setNumberOfLines:2];
-    [historyLabel setTextAlignment:NSTextAlignmentCenter];
-    [historyLabel setText:@"历史最高分数:\n0"];
-    historyLabel.layer.cornerRadius = 4;
-    historyLabel.layer.masksToBounds = YES;
-    [self.view addSubview:historyLabel];
-    
-    UIButton *listButton = [[UIButton alloc] initWithFrame:CGRectMake(220, 70, 80, 30)];
-    [listButton setBackgroundColor:[UIColor colorWithRed:0xE0/255.0 green:0x45/255.0 blue:0 alpha:1]];
-    [listButton setTitle:@"排行榜" forState:UIControlStateNormal];
-    listButton.titleLabel.font = [UIFont systemFontOfSize:10];
-    listButton.layer.cornerRadius = 4;
-    listButton.layer.masksToBounds = YES;
-    [self.view addSubview:listButton];
-    
-    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(20, 140, 280, 280)];
-    [background setBackgroundColor:[UIColor grayColor]];
-    background.layer.cornerRadius = 5;
-    background.layer.masksToBounds = YES;
-    [self.view addSubview:background];
-    
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            UIView *small = [[UIView alloc] initWithFrame:CGRectMake(20 + 8 * (i+1) + 60*i, 140 + 8 *(j+1) + 60*j, 60, 60)];
-            [small setBackgroundColor:[UIColor colorWithRed:0x8B/255.0 green:0x8B/255.0 blue:0x7A/255.0 alpha:1]];
-            [self.view addSubview:small];
-        }
-    }
-    
+
+
 
 
     // Do any additional setup after loading the view.
@@ -129,5 +96,81 @@
 {
     return NO;
 }
+
+#pragma mark 手势代理
+-(void)siwp:(UISwipeGestureRecognizerDirection)direction
+{
+    [self.gameData swip:direction];
+    NSArray *swipData = [self.gameData getMoveArrayAfterSwipWithDir:direction];
+
+    if (swipData)
+    {
+        
+        [UIView beginAnimations:@"swipAni" context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDelegate:self];
+        
+        [self.backGroundView swipLabelWithData:swipData];
+        [UIView commitAnimations];
+    }
+    else
+    {
+        BOOL gameEnd = [self.gameData shouldEndGame];
+        if (gameEnd)
+        {
+            NSString *message = [NSString stringWithFormat:@"您的最后得分为%@，加油！",[self.gameData score]];
+            [[[UIAlertView alloc] initWithTitle:@"游戏结束" message:message delegate:self cancelButtonTitle:@"重试" otherButtonTitles:@"haode", nil] show];
+            
+            NSUserDefaults *save = [NSUserDefaults standardUserDefaults];
+            NSInteger high = [save integerForKey:@"HistoryHighScore"];
+            if (high < [self.gameData.score intValue])
+            {
+                [save setInteger:[self.gameData.score intValue] forKey:@"HistoryHighScore"];
+
+            }
+        }
+    }
+ 
+
+
+    
+    
+}
+
+#pragma mark uiview动画代理
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    NSArray *numberData = [self.gameData getNumberArrayAfterSwip];
+    [self.backGroundView setNowScore:[self.gameData.score intValue]];
+
+    [UIView animateWithDuration:0.2 animations:^(void){
+        [self.backGroundView resetNumberWithData:numberData];
+
+    } completion:^(BOOL complete){
+        CGPoint point = [self.gameData getFreePostion];
+        NSInteger value = [self.gameData getRandomValueAtPostion:point];
+        GameLabel *label = [[GameLabel alloc] initWithTitle:value andPoint:point];
+        [self.backGroundView addLabel:label atPoint:point];
+
+    }];
+    
+    
+    
+}
+
+#pragma mark uialertview代理
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.gameData restartGame];
+    [self.backGroundView restartGame];
+    
+    CGPoint point = [self.gameData getFreePostion];
+    NSInteger value = [self.gameData getRandomValueAtPostion:point];
+    GameLabel *label = [[GameLabel alloc] initWithTitle:value andPoint:point];
+    [self.backGroundView addLabel:label atPoint:point];
+    
+}
+
+
 
 @end

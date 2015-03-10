@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		463C29211AA1E90300DD8F17 /* MoveDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 463C29201AA1E90300DD8F17 /* MoveDate.m */; };
 		46662CA01A47FD1A001CE76B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C9F1A47FD1A001CE76B /* Foundation.framework */; };
 		46662CA21A47FD1B001CE76B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662CA11A47FD1B001CE76B /* CoreGraphics.framework */; };
 		46662CA41A47FD1B001CE76B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662CA31A47FD1B001CE76B /* UIKit.framework */; };
@@ -20,6 +21,9 @@
 		46662CC31A47FD1B001CE76B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46662CC11A47FD1B001CE76B /* InfoPlist.strings */; };
 		46662CC51A47FD1B001CE76B /* _048Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46662CC41A47FD1B001CE76B /* _048Tests.m */; };
 		46662CD31A47FE11001CE76B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46662CD21A47FE11001CE76B /* RootViewController.m */; };
+		466B04941A49592A002C1C21 /* GameBackGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 466B04931A49592A002C1C21 /* GameBackGroundView.m */; };
+		466B04971A4969B4002C1C21 /* GameLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 466B04961A4969B4002C1C21 /* GameLabel.m */; };
+		46983E9B1A53E1A7005C9835 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 46983E9A1A53E1A7005C9835 /* GameData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		463C291F1AA1E90300DD8F17 /* MoveDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveDate.h; sourceTree = "<group>"; };
+		463C29201AA1E90300DD8F17 /* MoveDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveDate.m; sourceTree = "<group>"; };
 		46662C9C1A47FD1A001CE76B /* 2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46662C9F1A47FD1A001CE76B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		46662CA11A47FD1B001CE76B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -51,6 +57,12 @@
 		46662CC41A47FD1B001CE76B /* _048Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _048Tests.m; sourceTree = "<group>"; };
 		46662CD11A47FE11001CE76B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		46662CD21A47FE11001CE76B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		466B04921A49592A002C1C21 /* GameBackGroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBackGroundView.h; sourceTree = "<group>"; };
+		466B04931A49592A002C1C21 /* GameBackGroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBackGroundView.m; sourceTree = "<group>"; };
+		466B04951A4969B4002C1C21 /* GameLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLabel.h; sourceTree = "<group>"; };
+		466B04961A4969B4002C1C21 /* GameLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLabel.m; sourceTree = "<group>"; };
+		46983E991A53E1A7005C9835 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
+		46983E9A1A53E1A7005C9835 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +174,10 @@
 		46662CCF1A47FDD0001CE76B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				46983E991A53E1A7005C9835 /* GameData.h */,
+				46983E9A1A53E1A7005C9835 /* GameData.m */,
+				463C291F1AA1E90300DD8F17 /* MoveDate.h */,
+				463C29201AA1E90300DD8F17 /* MoveDate.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -169,6 +185,10 @@
 		46662CD01A47FDDF001CE76B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				466B04921A49592A002C1C21 /* GameBackGroundView.h */,
+				466B04931A49592A002C1C21 /* GameBackGroundView.m */,
+				466B04951A4969B4002C1C21 /* GameLabel.h */,
+				466B04961A4969B4002C1C21 /* GameLabel.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -269,7 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				466B04941A49592A002C1C21 /* GameBackGroundView.m in Sources */,
+				466B04971A4969B4002C1C21 /* GameLabel.m in Sources */,
+				463C29211AA1E90300DD8F17 /* MoveDate.m in Sources */,
 				46662CB01A47FD1B001CE76B /* GameAppDelegate.m in Sources */,
+				46983E9B1A53E1A7005C9835 /* GameData.m in Sources */,
 				46662CAC1A47FD1B001CE76B /* main.m in Sources */,
 				46662CD31A47FE11001CE76B /* RootViewController.m in Sources */,
 			);
@@ -468,6 +492,7 @@
 				46662CCA1A47FD1B001CE76B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46662CCB1A47FD1B001CE76B /* Build configuration list for PBXNativeTarget "2048Tests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +501,7 @@
 				46662CCD1A47FD1B001CE76B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
